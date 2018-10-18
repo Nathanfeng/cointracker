@@ -1,17 +1,24 @@
+import {UPDATE_COIN_PRICE} from './formActions';
+// import store from '../../store';
 
 const initial_state = {
-  coins: {}
+  coins: []
 }
 
-const reducer = (state, action) =>{
+const formReducer = (state = initial_state, action) =>{
+  console.log(action)
+  // console.log(store.getState())
   switch(action.type){
-    case "UPDATE_COIN_PRICE":
+    case UPDATE_COIN_PRICE:
       return {
-        coins: Object.assign({}, action.payload)
+        coins: [
+          ...state.coins,
+          action.payload
+        ]
       }
     default:
       return initial_state;
   }
 }
 
-export default reducer
+export default formReducer

@@ -8,7 +8,9 @@ class Form extends Component {
     e.preventDefault();
     const coin = e.target.elements.coin.value;
     const owned = e.target.elements.owned.checked;
-    this.props.getCoinInfo(coin, owned);
+    this.props.updateCoinInfo(coin, owned);
+    e.target.elements.owned.checked = false
+    e.target.elements.coin.value = ''
   }
 
   render() {
@@ -30,14 +32,14 @@ class Form extends Component {
   }
 }
 
-const mapDispatchToProps = (state) => ({
+const mapStateToProps = (state) => ({
   coins: state.coins
 })
-const mapStateToProps = (dispatch) => ({
-  getCoinInfo: (symbol, owned) => dispatch(getCoinInfo(symbol, owned))
+const mapDispatchToProps = (dispatch) => ({
+  updateCoinInfo: (symbol, owned) => dispatch(getCoinInfo(symbol, owned))
 })
 
-export default connect ({
-  mapDispatchToProps,
-  mapStateToProps
-})(Form);
+export default connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(Form);
