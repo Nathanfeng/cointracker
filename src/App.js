@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TotalValue} from './components/totalValue.js';
+import TotalValue from './components/totalValue.js';
 import Form from './components/Form/form.js';
 import AssetList from './components/AssetList/assetList.js';
 import './App.css';
