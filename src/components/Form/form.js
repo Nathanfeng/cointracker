@@ -2,20 +2,10 @@ import React, {Component} from 'react';
 
 class Form extends Component {
 
-  state = {
-    input: '',
-  }
-
-  onFieldChange = (e) => {
-    e.preventDefault();
-    this.setState({
-      input: e.target.value
-    })
-  }
-
   onSubmit = (e) => {
     e.preventDefault();
-    // this.props.
+    const coin = e.target.elements.coin.value;
+    const owned = e.target.elements.owned.checked;
 
   }
 
@@ -25,11 +15,11 @@ class Form extends Component {
         <h3>Enter the Symbol for the Coins you want to track</h3>
         <form onSubmit={this.onSubmit}>
           <input
-            placeholder='Coin Symbol'
+            placeholder='Coin Symbol ie. BTC'
             type='text'
-            onChange={this.onFieldChange}
-          /> <br/>
-          <input type="checkbox" value="Bike"/> I hold this coin <br/>
+            name='coin'
+          />
+        <input type="checkbox" name='owned'/> I hold this coin
           <button>Submit</button>
         </form>
       </div>
