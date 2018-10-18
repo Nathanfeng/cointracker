@@ -1,20 +1,16 @@
 
 const initial_state = {
-  coins: []
+  coins: {}
 }
 
 const reducer = (state, action) =>{
   switch(action.type){
-    case GET_COIN_INFO:
+    case "UPDATE_COIN_PRICE":
       return {
-
-      }
-    case DELETE:
-      return {
-
+        coins: Object.assign({}, action.payload)
       }
     default:
-      return state;
+      return initial_state;
   }
 }
 

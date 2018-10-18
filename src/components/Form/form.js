@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getCoinInfo} from './formActions';
 
 class Form extends Component {
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
     const coin = e.target.elements.coin.value;
     const owned = e.target.elements.owned.checked;
-
+    this.props.getCoinInfo(coin, owned);
   }
 
   render() {
@@ -28,4 +30,14 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapDispatchToProps = (state) => ({
+  coins: state.coins
+})
+const mapStateToProps = (dispatch) => ({
+  getCoinInfo: (symbol, owned) => dispatch(getCoinInfo(symbol, owned))
+})
+
+export default connect ({
+  mapDispatchToProps,
+  mapStateToProps
+})(Form);
