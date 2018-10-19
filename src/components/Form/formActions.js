@@ -7,17 +7,24 @@ const updateCoins = (coinInfo) => {
   })
 }
 
-export const getCoinInfo = (symbol, owned) => {
+export const getCoinInfo = (symbol, amount) => {
   return async (dispatch) => {
     const url = `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD`;
     const api_return = await fetch(url);
     const response = await api_return.json()
-    const data = {
-      symbol,
-      price: response.USD,
-      owned
+    console.log(response)
+    if (response.Response === 'Error'){
+      alert(response.Message);
+    } else {
+
+      const data = {
+        symbol,
+        price: response.USD,
+        amount
+      }
+      console.log(data);
+      dispatch(updateCoins(data));
     }
-    console.log(data);
-    dispatch(updateCoins(data));
+
   }
 }

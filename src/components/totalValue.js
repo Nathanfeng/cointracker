@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 
 const TotalValue = (props) => {
   let totalPortfolioValue;
-  let coinPrices;
+  let coinAccum;
   if(props.coins.length >0){
-    coinPrices = props.coins.map((coin) => coin.price)
-    totalPortfolioValue = coinPrices.reduce((accum, el) => accum + el);
+    coinAccum = props.coins.map((coin) => {
+      return coin.price * coin.amount
+    })
+    console.log(coinAccum);
+    totalPortfolioValue = coinAccum.reduce((accum, el) => accum + el);
     totalPortfolioValue = Math.round(totalPortfolioValue * 100)/100
   }
-  console.log(totalPortfolioValue);
   return (
     <div>
       <h3>The total value of your portfolio is ${totalPortfolioValue} USD</h3>

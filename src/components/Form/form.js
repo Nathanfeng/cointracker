@@ -7,10 +7,14 @@ class Form extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     const coin = e.target.elements.coin.value;
-    const owned = e.target.elements.owned.checked;
-    this.props.updateCoinInfo(coin, owned);
-    e.target.elements.owned.checked = false
-    e.target.elements.coin.value = ''
+    const amount = e.target.elements.amount.value;
+    if (amount < 0){
+      alert('cant have negative amount owned')
+    } else {
+      this.props.updateCoinInfo(coin, amount);
+    }
+    e.target.elements.coin.value = '';
+    e.target.elements.amount.value = '';
   }
 
   render() {
@@ -22,8 +26,8 @@ class Form extends Component {
             placeholder='Coin Symbol ie. BTC'
             type='text'
             name='coin'
-          />
-        <input type="checkbox" name='owned'/> I hold this coin
+          /> <br/>
+          <input type="number" name='amount' step='any' placeholder='amount owned ie. 0.5'/> <br/>
           <button>Submit</button>
         </form>
       </div>
@@ -36,7 +40,7 @@ const mapStateToProps = (state) => ({
   coins: state.coins
 })
 const mapDispatchToProps = (dispatch) => ({
-  updateCoinInfo: (symbol, owned) => dispatch(getCoinInfo(symbol, owned))
+  updateCoinInfo: (symbol, amount) => dispatch(getCoinInfo(symbol, amount))
 })
 
 export default connect (
