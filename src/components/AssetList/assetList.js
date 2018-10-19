@@ -19,7 +19,7 @@ class AssetList extends Component {
     console.log(this.props.coins.map((el) => <p>{el.price * el.amount}</p>))
     return(
       <div>
-        <h3>Here is the list of assets</h3>
+        <h3>Assets Owned:</h3>
 
       <table>
         <thead>

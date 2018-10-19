@@ -11,6 +11,8 @@ const TotalValue = (props) => {
     console.log(coinAccum);
     totalPortfolioValue = coinAccum.reduce((accum, el) => accum + el);
     totalPortfolioValue = Math.round(totalPortfolioValue * 100)/100
+  } else {
+    totalPortfolioValue = 0;
   }
   return (
     <div>
@@ -18,6 +20,7 @@ const TotalValue = (props) => {
     </div>
   )
 }
+
 
 const mapStateToProps = (state) => {
   return ({

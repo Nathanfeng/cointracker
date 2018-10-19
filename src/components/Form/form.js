@@ -4,7 +4,7 @@ import {getCoinInfo} from './formActions';
 
 class Form extends Component {
 
-  onSubmit = async (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
     const coin = e.target.elements.coin.value;
     const amount = e.target.elements.amount.value;
@@ -20,7 +20,7 @@ class Form extends Component {
   render() {
     return(
       <div>
-        <h3>Enter the Symbol for the Coins you want to track</h3>
+        <h3>Enter the symbol for the coins you want to track</h3>
         <form onSubmit={this.onSubmit}>
           <input
             placeholder='Coin Symbol ie. BTC'

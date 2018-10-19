@@ -12,7 +12,6 @@ export const getCoinInfo = (symbol, amount) => {
     const url = `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD`;
     const api_return = await fetch(url);
     const response = await api_return.json()
-    console.log(response)
     if (response.Response === 'Error'){
       alert(response.Message);
     } else {

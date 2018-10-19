@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Cointracker</h2>
+        <h2>CoinTracker</h2>
       <TotalValue/>
       <AssetList/>
       <Form/>
