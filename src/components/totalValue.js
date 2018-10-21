@@ -16,7 +16,7 @@ const TotalValue = (props) => {
   }
   return (
     <div>
-      <h3>The total value of your portfolio is ${totalPortfolioValue} USD</h3>
+      <h3>The total value of your portfolio is ${totalPortfolioValue.toLocaleString('en')} USD</h3>
     </div>
   )
 }

@@ -14,18 +14,20 @@ const TableRow = (props) => {
   return (
     <tr>
       <td>{props.symbol}</td>
-      <td>{props.price}</td>
-      <td>{props.amount}</td>
-      <td>{value}</td>
+    <td>${props.price.toLocaleString('en')}</td>
+  <td>{props.amount.toLocaleString('en')}</td>
+<td>${value.toLocaleString('en')}</td>
       <td>
         <button
-          onClick={onDelete()}
+          onClick={onDelete}
         >
           Delete
         </button></td>
     </tr>
   )
 }
+
+
 
 
 const mapDispatchToProps = (dispatch) => ({
