@@ -2,38 +2,48 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getCoinInfo} from './formActions';
 
-class Form extends Component {
+const Form = (props) => {
+  const includeCoin = (coinType) => {
+    let coinArray = props.coins;
+    for(let i =0; i< coinArray.length; i++) {
+      if (coinArray[i].symbol === coinType) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const coin = e.target.elements.coin.value;
     const amount = e.target.elements.amount.value;
+    console.log(includeCoin(coin))
     if (amount < 0){
-      alert('cant have negative amount owned')
+      alert('cant have negative amount owned');
+    } else if(includeCoin(coin)) {
+      alert('you already entered that coin');
     } else {
-      this.props.updateCoinInfo(coin, amount);
+      props.updateCoinInfo(coin, amount);
     }
     e.target.elements.coin.value = '';
     e.target.elements.amount.value = '';
   }
 
-  render() {
-    return(
-      <div>
-        <h3>Enter the symbol for the coins you want to track</h3>
-        <form onSubmit={this.onSubmit}>
-          <input
-            placeholder='Coin Symbol ie. BTC'
-            type='text'
-            name='coin'
-          /> <br/>
-          <input type="number" name='amount' step='any' placeholder='amount owned ie. 0.5'/> <br/>
-          <button>Submit</button>
-        </form>
-      </div>
+  return (
+    <div>
+      <h3>Enter the symbol for the coins you want to track</h3>
+      <form onSubmit={onSubmit}>
+        <input
+          placeholder='Coin Symbol ie. BTC'
+          type='text'
+          name='coin'
+        /> <br/>
+        <input type="number" name='amount' step='any' placeholder='amount owned ie. 0.5'/> <br/>
+        <button>Submit</button>
+      </form>
+    </div>
 
-    )
-  }
+  )
 }
 
 const mapStateToProps = (state) => ({

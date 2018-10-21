@@ -7,7 +7,6 @@ const TableRow = (props) => {
   const value = Math.round(props.price * props.amount * 100)/100 ;
 
   const onDelete = () => {
-    debugger
     props.deleteCoin(props.symbol);
   }
 
