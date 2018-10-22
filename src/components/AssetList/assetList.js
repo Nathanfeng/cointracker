@@ -1,12 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import TableRow from './TableRow';
+import Row from './Row';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 const AssetList = (props) => {
   const renderRows = () => {
     return props.coins.map((coin, i) => {
-      return <TableRow
+      return <Row
         key={i}
         symbol={coin.symbol}
         price={coin.price}
@@ -19,7 +26,23 @@ const AssetList = (props) => {
     props.coins.length > 0 && (
       <div>
         <h3>Assets Owned:</h3>
-
+        <Paper>
+          <Table width='100px'>
+            <TableHead>
+              <TableRow>
+                <TableCell>Symbol</TableCell>
+                <TableCell numeric>Current Price</TableCell>
+                <TableCell numeric>Amount Owned</TableCell>
+                <TableCell numeric>Value in USD</TableCell>
+              <TableCell >Option</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {renderRows()}
+            </TableBody>
+          </Table>
+        </Paper>
+{/*
         <table>
           <thead>
             <tr>
@@ -33,54 +56,13 @@ const AssetList = (props) => {
           <tbody>
             {renderRows()}
           </tbody>
-        </table>
+        </table> */}
 
       </div>
     )
   )
 
 }
-//
-// class AssetList extends Component {
-//
-//   renderRows = () => {
-//     return this.props.coins.map((coin, i) => {
-//       return <TableRow
-//         key={i}
-//         symbol={coin.symbol}
-//         price={coin.price}
-//         amount={coin.amount}
-//       />
-//     })
-//   }
-//
-//   render() {
-//     console.log(this.props.coins.map((el) => <p>{el.price * el.amount}</p>))
-//     return(
-//       this.props.coins.length > 0 && (
-//         <div>
-//           <h3>Assets Owned:</h3>
-//
-//           <table>
-//             <thead>
-//               <tr>
-//                 <th>Symbol</th>
-//                 <th>Current Price</th>
-//                 <th>Amount Owned</th>
-//                 <th>Value in USD</th>
-//               </tr>
-//             </thead>
-//
-//             <tbody>
-//               {this.renderRows()}
-//             </tbody>
-//           </table>
-//
-//         </div>
-//       )
-//     )
-//   }
-// }
 
 const mapStateToProps = (state) => {
   return {
