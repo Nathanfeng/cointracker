@@ -21,7 +21,7 @@ const formReducer = (state = initial_state, action) =>{
       };
     default:
       return initial_state;
-  };
+  }
 }
 
 export default formReducer;
