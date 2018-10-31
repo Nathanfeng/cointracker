@@ -26,8 +26,8 @@ const AssetList = (props) => {
     props.coins.length > 0 && (
       <div>
         <h3>Assets Owned:</h3>
-        <Paper>
-          <Table width='100px'>
+        <Paper class='wrapper'>
+          <Table class='table' width='100px'>
             <TableHead>
               <TableRow>
                 <TableCell>Symbol</TableCell>

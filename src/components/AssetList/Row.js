@@ -17,12 +17,11 @@ const Row = (props) => {
   return (
     <TableRow key={props.i}>
       <TableCell>{props.symbol}</TableCell>
-      <TableCell numeric>{props.price.toLocaleString('en')}</TableCell>
+      <TableCell numeric>${props.price.toLocaleString('en')}</TableCell>
       <TableCell numeric>{props.amount.toLocaleString('en')}</TableCell>
-      <TableCell numeric>{value.toLocaleString('en')}</TableCell>
+      <TableCell numeric>${value.toLocaleString('en')}</TableCell>
       <TableCell>
         <Button variant="contained" color="secondary" onClick={onDelete} >
-          Delete
           <DeleteIcon />
         </Button>
       </TableCell>
